@@ -49,16 +49,12 @@ public class WordFrequencyGame {
 
         Map<String, List<WordInfo>> wordInfoMap = getListMap(wordInfoList);
 
-        List<WordInfo> distinctWordInfos = new ArrayList<>();
-
-        distinctWordInfos = wordInfoMap.entrySet()
+        return wordInfoMap.entrySet()
                 .stream()
                 .map(wordInfoDetail -> new WordInfo(
                         wordInfoDetail.getKey(),
                         wordInfoDetail.getValue().size()))
                 .collect(Collectors.toList());
-
-        return distinctWordInfos;
     }
 
     private Map<String,List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
