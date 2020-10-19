@@ -16,6 +16,17 @@ public class WordFrequencyGame {
         return assembleWordInfoList(wordInfoList);
     }
 
+    private List<WordInfo> calculateWordFrequency(String sentence) {
+        String[] words = sentence.split(WHITE_SPACE);
+
+        List<String> wordsList = Arrays.asList(words);
+        Set<String> wordsSet = new HashSet<>(wordsList);
+
+        return wordsSet.stream()
+                .map(word -> new WordInfo(word, frequency(wordsList, word)))
+                .collect(Collectors.toList());
+    }
+
     private void sortWordInfos(List<WordInfo> wordInfoList) {
         wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
     }
@@ -26,16 +37,5 @@ public class WordFrequencyGame {
 
     private String formatWordInfo(WordInfo wordInfo) {
         return String.format("%s %d", wordInfo.getWord(), wordInfo.getWordCount());
-    }
-
-    private List<WordInfo> calculateWordFrequency(String sentence) {
-        String[] words = sentence.split(WHITE_SPACE);
-
-        List<String> wordsList = Arrays.asList(words);
-        Set<String> wordsSet = new HashSet<>(wordsList);
-
-        return wordsSet.stream()
-                .map(word -> new WordInfo(word, frequency(wordsList, word)))
-                .collect(Collectors.toList());
     }
 }
