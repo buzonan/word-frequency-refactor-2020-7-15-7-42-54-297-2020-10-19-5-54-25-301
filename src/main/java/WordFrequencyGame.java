@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Collections.frequency;
+
 public class WordFrequencyGame {
 
     private static final String WHITE_SPACE = "\\s+";
@@ -28,12 +30,12 @@ public class WordFrequencyGame {
     private List<WordInfo> calculateWordFrequency(String sentence) {
         String[] words = sentence.split(WHITE_SPACE);
 
+        List<String> wordsList = Arrays.asList(words);
+        Set<String> wordsSet = new HashSet<>(wordsList);
 
-        List<WordInfo> wordInfoList = getWordInfoList(words);
-
-        Map<String, List<WordInfo>> wordInfoMap = getListMap(wordInfoList);
-
-        return getDistinctWordInfos(wordInfoMap);
+        return wordsSet.stream()
+                .map(word -> new WordInfo(word, frequency(wordsList, word)))
+                .collect(Collectors.toList());
     }
 
     private List<WordInfo> getDistinctWordInfos(Map<String, List<WordInfo>> wordInfoMap) {
