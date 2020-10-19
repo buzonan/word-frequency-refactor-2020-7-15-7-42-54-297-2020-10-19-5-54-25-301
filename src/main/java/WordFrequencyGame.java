@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
@@ -39,14 +40,12 @@ public class WordFrequencyGame {
     private List<WordInfo> calculateWordFrequency(String sentence) {
         String[] words = sentence.split(WORDS);
 
-        List<WordInfo> wordInfoList = new ArrayList<>();
 
-        for (String word : words) {
-            WordInfo wordInfo = new WordInfo(word, 1);
-            wordInfoList.add(wordInfo);
-        }
+        List<WordInfo> wordInfoList = Arrays.stream(words)
+                .map(word-> (new WordInfo(word, 1)))
+                .collect(Collectors.toList());
 
-        Map<String, List<WordInfo>> wordInfoMap =getListMap(wordInfoList);
+        Map<String, List<WordInfo>> wordInfoMap = getListMap(wordInfoList);
 
         List<WordInfo> distinctWordInfos = new ArrayList<>();
 
@@ -59,7 +58,6 @@ public class WordFrequencyGame {
 
         return distinctWordInfos;
     }
-
 
     private Map<String,List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
         Map<String, List<WordInfo>> wordInfoMap = new HashMap<>();
