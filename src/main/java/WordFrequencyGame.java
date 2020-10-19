@@ -3,7 +3,7 @@ import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
-    private static final String WORDS = "\\s+";
+    private static final String WHITE_SPACE = "\\s+";
     private static final String NEW_LINE = "\n";
 
     public String getResult(String sentence){
@@ -25,7 +25,7 @@ public class WordFrequencyGame {
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
-        String[] words = sentence.split(WORDS);
+        String[] words = sentence.split(WHITE_SPACE);
 
 
         List<WordInfo> wordInfoList = getWordInfoList(words);
