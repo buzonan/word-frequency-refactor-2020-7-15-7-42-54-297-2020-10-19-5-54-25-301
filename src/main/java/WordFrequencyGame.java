@@ -4,6 +4,7 @@ public class WordFrequencyGame {
 
     public static final String WORDS = "\\s+";
     public static final String NEW_LINE = "\n";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String sentence){
 
@@ -42,9 +43,7 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-
-
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
