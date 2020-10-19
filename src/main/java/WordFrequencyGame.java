@@ -8,7 +8,7 @@ public class WordFrequencyGame {
 
     public String getResult(String sentence){
 
-        if (sentence.split(WORDS).length==1) {
+        if (isSentenceContainsOneWord(sentence)) {
             return sentence + " 1";
         }
         try {
@@ -18,6 +18,10 @@ public class WordFrequencyGame {
             return CALCULATE_ERROR;
         }
 
+    }
+
+    private boolean isSentenceContainsOneWord(String sentence) {
+        return sentence.split(WORDS).length==1;
     }
 
     private String assembleWordInfoList(List<WordInfo> wordInfoList) {
