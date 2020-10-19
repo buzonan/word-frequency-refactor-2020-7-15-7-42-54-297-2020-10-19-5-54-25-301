@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class WordFrequencyGameTest {
 
     @Test
-    public void should_get_the_1_when_input_the() throws Exception {
+    public void should_get_the_1_when_input_sentence() throws Exception {
         //Given
         String inputStr = "the";
         String expectResult = "the 1";
