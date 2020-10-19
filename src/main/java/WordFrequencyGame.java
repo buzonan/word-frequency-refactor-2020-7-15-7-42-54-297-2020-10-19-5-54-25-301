@@ -9,11 +9,12 @@ public class WordFrequencyGame {
     public String getResult(String sentence){
         List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
 
+        wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
+
         return assembleWordInfoList(wordInfoList);
     }
 
     private String assembleWordInfoList(List<WordInfo> wordInfoList) {
-        wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
         StringJoiner joiner = new StringJoiner(NEW_LINE);
 
         for (WordInfo wordInfo : wordInfoList) {
