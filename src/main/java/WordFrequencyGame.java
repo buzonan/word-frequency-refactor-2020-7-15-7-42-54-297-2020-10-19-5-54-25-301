@@ -5,24 +5,11 @@ public class WordFrequencyGame {
 
     private static final String WORDS = "\\s+";
     private static final String NEW_LINE = "\n";
-    private static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String sentence){
+        List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
 
-        if (isSentenceContainsOneWord(sentence)) {
-            return sentence + " 1";
-        }
-        try {
-            List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
-            return assembleWordInfoList(wordInfoList);
-        } catch (Exception e) {
-            return CALCULATE_ERROR;
-        }
-
-    }
-
-    private boolean isSentenceContainsOneWord(String sentence) {
-        return sentence.split(WORDS).length==1;
+        return assembleWordInfoList(wordInfoList);
     }
 
     private String assembleWordInfoList(List<WordInfo> wordInfoList) {
