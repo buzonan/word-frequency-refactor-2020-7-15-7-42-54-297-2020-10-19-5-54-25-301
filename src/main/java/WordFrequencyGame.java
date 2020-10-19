@@ -21,14 +21,11 @@ public class WordFrequencyGame {
     }
 
     private String assembleWordInfoList(List<WordInfo> wordInfoList) {
-        StringJoiner joiner = new StringJoiner(NEW_LINE);
+        return wordInfoList.stream().map(this::formatWordInfo).collect(Collectors.joining(NEW_LINE));
+    }
 
-        for (WordInfo wordInfo : wordInfoList) {
-            String wordInfoDetail = String.format("%s %d", wordInfo.getWord(), wordInfo.getWordCount());
-            joiner.add(wordInfoDetail);
-        }
-
-        return joiner.toString();
+    private String formatWordInfo(WordInfo wordInfo) {
+        return String.format("%s %d", wordInfo.getWord(), wordInfo.getWordCount());
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
