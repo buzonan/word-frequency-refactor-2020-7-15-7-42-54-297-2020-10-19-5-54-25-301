@@ -2,9 +2,9 @@ import java.util.*;
 
 public class WordFrequencyGame {
 
-    public static final String WORDS = "\\s+";
-    public static final String NEW_LINE = "\n";
-    public static final String CALCULATE_ERROR = "Calculate Error";
+    private static final String WORDS = "\\s+";
+    private static final String NEW_LINE = "\n";
+    private static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String sentence){
 
@@ -47,8 +47,10 @@ public class WordFrequencyGame {
 
         List<WordInfo> distinctWordInfos = new ArrayList<>();
         for (Map.Entry<String, List<WordInfo>> wordInfoDetail : wordInfoMap.entrySet()){
+
             WordInfo wordInfo = new WordInfo(wordInfoDetail.getKey(), wordInfoDetail.getValue().size());
             distinctWordInfos.add(wordInfo);
+
         }
         wordInfoList = distinctWordInfos;
         return wordInfoList;
