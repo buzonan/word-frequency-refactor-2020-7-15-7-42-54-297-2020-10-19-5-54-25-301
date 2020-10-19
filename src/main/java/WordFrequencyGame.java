@@ -19,16 +19,20 @@ public class WordFrequencyGame {
 
                 wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
 
-                StringJoiner joiner = new StringJoiner(NEW_LINE);
-                for (WordInfo wordInfo : wordInfoList) {
-                    String wordInfoDetail = String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount());
-                    joiner.add(wordInfoDetail);
-                }
-                return joiner.toString();
+                return assembleWordInfoList(wordInfoList);
             } catch (Exception e) {
                 return CALCULATE_ERROR;
             }
         }
+    }
+
+    private String assembleWordInfoList(List<WordInfo> wordInfoList) {
+        StringJoiner joiner = new StringJoiner(NEW_LINE);
+        for (WordInfo wordInfo : wordInfoList) {
+            String wordInfoDetail = String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount());
+            joiner.add(wordInfoDetail);
+        }
+        return joiner.toString();
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
