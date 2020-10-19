@@ -41,11 +41,7 @@ public class WordFrequencyGame {
         String[] words = sentence.split(WORDS);
 
 
-        List<WordInfo> wordInfoList =
-                Arrays
-                .stream(words)
-                .map(word-> (new WordInfo(word, 1)))
-                .collect(Collectors.toList());
+        List<WordInfo> wordInfoList = getWordInfoList(words);
 
         Map<String, List<WordInfo>> wordInfoMap = getListMap(wordInfoList);
 
@@ -55,6 +51,13 @@ public class WordFrequencyGame {
                         wordInfoDetail.getKey(),
                         wordInfoDetail.getValue().size()))
                 .collect(Collectors.toList());
+    }
+
+    private List<WordInfo> getWordInfoList(String[] words) {
+        return Arrays
+        .stream(words)
+        .map(word-> (new WordInfo(word, 1)))
+        .collect(Collectors.toList());
     }
 
     private Map<String,List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
