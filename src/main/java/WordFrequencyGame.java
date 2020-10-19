@@ -37,41 +37,4 @@ public class WordFrequencyGame {
                 .map(word -> new WordInfo(word, frequency(wordsList, word)))
                 .collect(Collectors.toList());
     }
-
-    private List<WordInfo> getDistinctWordInfos(Map<String, List<WordInfo>> wordInfoMap) {
-        return wordInfoMap.entrySet()
-                .stream()
-                .map(wordInfoDetail -> new WordInfo(
-                        wordInfoDetail.getKey(),
-                        wordInfoDetail.getValue().size()))
-                .collect(Collectors.toList());
-    }
-
-    private List<WordInfo> getWordInfoList(String[] words) {
-        return Arrays
-        .stream(words)
-        .map(word-> (new WordInfo(word, 1)))
-        .collect(Collectors.toList());
-    }
-
-    private Map<String,List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
-        Map<String, List<WordInfo>> wordInfoMap = new HashMap<>();
-
-        for (WordInfo wordInfo : wordInfoList){
-            if (!wordInfoMap.containsKey(wordInfo.getWord())){
-                List<WordInfo> wordInfos = new ArrayList<>();
-                wordInfos.add(wordInfo);
-                wordInfoMap.put(wordInfo.getWord(), wordInfos);
-            }
-
-            else {
-                wordInfoMap.get(wordInfo.getWord()).add(wordInfo);
-            }
-        }
-
-
-        return wordInfoMap;
-    }
-
-
 }
